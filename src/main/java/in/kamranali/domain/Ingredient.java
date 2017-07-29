@@ -10,10 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
 public class Ingredient {
 
 	@Id
@@ -28,4 +32,13 @@ public class Ingredient {
 	
 	@OneToOne(fetch = FetchType.EAGER) // One to One fetch type is already eager
 	private UnitOfMeasure unitOfmeasure;
+
+	public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfmeasure, Recipe recipe) {
+		this.description = description;
+		this.amount = amount;
+		this.unitOfmeasure = unitOfmeasure;
+		this.recipe = recipe;
+	}
+	
+	
 }
