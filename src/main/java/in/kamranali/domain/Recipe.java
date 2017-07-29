@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -43,5 +45,10 @@ public class Recipe {
 	
 	@Enumerated(value= EnumType.STRING)
 	private Difficulty difficulty;
+	
+	@ManyToMany
+	@JoinTable(name = "recipe_category", joinColumns = @JoinColumn(name = "recipe_id"),
+	inverseJoinColumns = @JoinColumn(name = "category_id"))
+	private Set<Category> categories;
 	
 }
