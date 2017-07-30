@@ -33,11 +33,10 @@ public class Ingredient {
 	@OneToOne(fetch = FetchType.EAGER) // One to One fetch type is already eager
 	private UnitOfMeasure unitOfmeasure;
 
-	public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfmeasure, Recipe recipe) {
+	public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfmeasure) {
 		this.description = description;
 		this.amount = amount;
 		this.unitOfmeasure = unitOfmeasure;
-		this.recipe = recipe;
 	}
 	
 	
