@@ -12,13 +12,16 @@ import in.kamranali.repositories.RecipeRepository;
 @Service
 public class RecipeServicImpl implements RecipeService {
 
-	@Autowired
-	private RecipeRepository recipeRepo;
+	private RecipeRepository recipeRepository;
 	
+	public RecipeServicImpl(RecipeRepository recipeRepository) {
+		this.recipeRepository = recipeRepository;
+	}
+
 	@Override
 	public Set<Recipe> getRecipes() {
 		Set<Recipe> recipeSet = new HashSet<>();
-		recipeRepo.findAll().iterator().forEachRemaining(recipeSet::add);
+		recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
 		return recipeSet;
 	}
 
