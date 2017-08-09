@@ -18,20 +18,28 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import in.kamranali.converters.RecipeCommandToRecipe;
+import in.kamranali.converters.RecipeToRecipeCommand;
 import in.kamranali.domain.Recipe;
 import in.kamranali.repositories.RecipeRepository;
 
-public class RecipeServicImplTest {
+public class RecipeServiceImplTest {
 
-	private RecipeServicImpl recipeService;
+	private RecipeServiceImpl recipeService;
 	
 	@Mock
 	private RecipeRepository recipeRepository;
 	
+	@Mock
+	private RecipeToRecipeCommand recipeToRecipeCommand;
+	
+	@Mock
+	private RecipeCommandToRecipe recipeCommandToRecipe;
+	
 	@Before
 	public void setUp(){
 		MockitoAnnotations.initMocks(this);
-		recipeService = new RecipeServicImpl(recipeRepository);
+		recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
 	}
 	
 	@Test

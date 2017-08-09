@@ -31,12 +31,12 @@ public class Ingredient {
 	private Recipe recipe;
 	
 	@OneToOne(fetch = FetchType.EAGER) // One to One fetch type is already eager
-	private UnitOfMeasure unitOfmeasure;
+	private UnitOfMeasure uom;
 
 	public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfmeasure) {
 		this.description = description;
 		this.amount = amount;
-		this.unitOfmeasure = unitOfmeasure;
+		this.uom = unitOfmeasure;
 	}
 	
 	
