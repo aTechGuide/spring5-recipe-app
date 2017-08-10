@@ -60,7 +60,7 @@ public class RecipeServiceImplTest {
 		Optional<Recipe> recipeOptional = Optional.of(new Recipe());
 				
 		when(recipeRepository.findById(Mockito.anyLong())).thenReturn(recipeOptional);
-		Recipe recipe = recipeService.findByID(1L);
+		Recipe recipe = recipeService.findById(1L);
 		
 		assertEquals(recipe, recipeOptional.get());
 		verify(recipeRepository, times(1)).findById(Mockito.anyLong());

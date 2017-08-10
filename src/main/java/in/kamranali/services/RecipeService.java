@@ -8,7 +8,9 @@ import in.kamranali.domain.Recipe;
 public interface RecipeService {
 
 	Set<Recipe> getRecipes();
-	Recipe findByID(Long l);
+	Recipe findById(Long l);
 	
 	RecipeCommand saveRecipeCommand(RecipeCommand command);
+	RecipeCommand findCommandById(Long anyLong);
+	
 }

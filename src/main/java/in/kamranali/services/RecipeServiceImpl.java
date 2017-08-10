@@ -37,7 +37,7 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public Recipe findByID(Long l) {
+	public Recipe findById(Long l) {
 
 		Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 		
@@ -56,6 +56,12 @@ public class RecipeServiceImpl implements RecipeService {
 		Recipe savedRecipe = recipeRepository.save(detachedRecipe);
 		log.debug("Saved RecipeID:" + savedRecipe.getId());
 		return recipeToRecipeCommand.convert(savedRecipe);
+	}
+
+	@Override
+	@Transactional
+	public RecipeCommand findCommandById(Long id) {
+		return recipeToRecipeCommand.convert(findById(id));
 	}
 
 }
