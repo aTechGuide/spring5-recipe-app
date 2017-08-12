@@ -1,4 +1,4 @@
-[![Build Status](https://circleci.com/gh/kamranalinitb/spring5-recipe-app.svg?&style=shield&circle-token=d269ba3daec70f11c149638a963a81cfde360da0)](https://circleci.com/gh/kamranalinitb/spring5-recipe-app)
+[![CircleCI](https://circleci.com/gh/kamranalinitb/spring5-recipe-app/tree/master.svg?style=svg)](https://circleci.com/gh/kamranalinitb/spring5-recipe-app/tree/master)
 
 # spring5-recipe-app
 
