@@ -22,7 +22,6 @@ import in.kamranali.commands.RecipeCommand;
 import in.kamranali.domain.Recipe;
 import in.kamranali.services.RecipeService;
 
-
 /**
  * Created by jt on 6/19/17.
  */
@@ -60,8 +59,6 @@ public class RecipeControllerTest {
 
     @Test
     public void testGetNewRecipeForm() throws Exception {
-        RecipeCommand command = new RecipeCommand();
-
         mockMvc.perform(get("/recipe/new"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe/recipeform"))
