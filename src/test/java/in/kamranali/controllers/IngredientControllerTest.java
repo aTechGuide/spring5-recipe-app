@@ -16,13 +16,17 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import in.kamranali.commands.IngredientCommand;
 import in.kamranali.commands.RecipeCommand;
+import in.kamranali.services.IngredientService;
 import in.kamranali.services.RecipeService;
 
 public class IngredientControllerTest {
 
 	@Mock
 	RecipeService recipeService;
+	@Mock
+	IngredientService ingredientService;
 	
 	IngredientController controller;
 	
@@ -32,7 +36,7 @@ public class IngredientControllerTest {
 	public void setUp(){
 		
 		MockitoAnnotations.initMocks(this);
-		controller = new IngredientController(recipeService);
+		controller = new IngredientController(recipeService, ingredientService);
 		mockMVC = MockMvcBuilders.standaloneSetup(controller).build();
 		
 	}
@@ -47,6 +51,19 @@ public class IngredientControllerTest {
 		.andExpect(model().attributeExists("recipe"));
 		
 		verify(recipeService).findCommandById(Mockito.anyLong());
+	}
+	
+	@Test
+	public void testShowIngredient() throws Exception {
+		
+		when(ingredientService.findByRecipeIdAndIngredientId(Mockito.anyLong(), Mockito.anyLong())).thenReturn(new IngredientCommand());
+		
+		mockMVC.perform(get("/recipe/1/ingredient/2/show"))
+		.andExpect(status().isOk())
+		.andExpect(view().name("recipe/ingredient/show"))
+		.andExpect(model().attributeExists("ingredient"));
+		
+		verify(ingredientService).findByRecipeIdAndIngredientId(Mockito.anyLong(), Mockito.anyLong());
 	}
 
 }
