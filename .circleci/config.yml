@@ -37,12 +37,15 @@ jobs:
           key: spring5-recipe-app-{{ checksum "pom.xml" }}
         
       # run tests!
-      - run: mvn install
+      - run: mvn install surefire-report:report-only site -DgenerateReports=false
 
       - store_test_results:
           path: target/surefire-reports
 
       - store_artifacts:
           path: target/spring5-recipe-app-0.0.1.jar
+
+      - store_artifacts:
+          path: target/site
 
 
