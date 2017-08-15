@@ -1,6 +1,5 @@
 package in.kamranali.controllers;
 
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -67,6 +66,20 @@ public class IngredientControllerTest {
 		.andExpect(status().isOk())
 		.andExpect(view().name("recipe/ingredient/show"))
 		.andExpect(model().attributeExists("ingredient"));
+		
+	}
+	
+	@Test
+	public void testNewIngredientForm() throws Exception {
+		
+		when(recipeService.findCommandById(Mockito.anyLong())).thenReturn(new RecipeCommand());
+		when(unitOfMeasureService.listAllUoms()).thenReturn(new HashSet<>());
+		
+		mockMVC.perform(get("/recipe/1/ingredient/new"))
+		.andExpect(status().isOk())
+		.andExpect(view().name("recipe/ingredient/ingredientform"))
+		.andExpect(model().attributeExists("ingredient"))
+		.andExpect(model().attributeExists("uomList"));
 		
 	}
 	
