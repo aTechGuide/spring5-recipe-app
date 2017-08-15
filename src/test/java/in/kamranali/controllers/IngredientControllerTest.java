@@ -1,5 +1,6 @@
 package in.kamranali.controllers;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -17,6 +18,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -125,7 +127,5 @@ public class IngredientControllerTest {
 		.andExpect(view().name("redirect:/recipe/1/ingredients"));
 		
 		verify(ingredientService, times(1)).deleteById(Mockito.anyLong(), Mockito.anyLong());
-		
 	}
-
 }
