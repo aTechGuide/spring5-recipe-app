@@ -1,5 +1,7 @@
 package in.kamranali.controllers;
 
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -112,6 +114,17 @@ public class IngredientControllerTest {
 				.param("description", "Some String"))
 		.andExpect(status().is3xxRedirection())
 		.andExpect(view().name("redirect:/recipe/2/ingredient/3/show"));
+		
+	}
+	
+	@Test
+	public void testDeleteIngredient() throws Exception {
+		
+		mockMVC.perform(get("/recipe/1/ingredient/2/delete"))
+		.andExpect(status().is3xxRedirection())
+		.andExpect(view().name("redirect:/recipe/1/ingredients"));
+		
+		verify(ingredientService, times(1)).deleteById(Mockito.anyLong(), Mockito.anyLong());
 		
 	}
 
