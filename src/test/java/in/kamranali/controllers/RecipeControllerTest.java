@@ -74,7 +74,7 @@ public class RecipeControllerTest {
         when(recipeService.saveRecipeCommand(Mockito.any())).thenReturn(command);
 
         mockMvc.perform(post("/recipe")
-                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)   
                 .param("id", "")
                 .param("description", "some string")
         )
@@ -110,7 +110,8 @@ public class RecipeControllerTest {
     	when(recipeService.findById(Mockito.anyLong())).thenThrow(NotFoundException.class);
     	
     	mockMvc.perform(get("/recipe/1/show"))
-    	.andExpect(status().isNotFound());
+    	.andExpect(status().isNotFound())
+    	.andExpect(view().name("404error"));
     	
     }
 }
