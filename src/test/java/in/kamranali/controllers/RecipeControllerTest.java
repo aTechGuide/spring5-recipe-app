@@ -41,7 +41,9 @@ public class RecipeControllerTest {
 
         controller = new RecipeController(recipeService);
       //We are using a mocked servlet context (Mocked Dispatcher servlet) to test MVC controllers
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(controller)
+        		.setControllerAdvice(new ControllerExceptionHandler())
+        		.build();
     }
 
     @Test
