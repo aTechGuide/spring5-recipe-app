@@ -1,6 +1,7 @@
 package in.kamranali.services;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -21,6 +22,7 @@ import org.mockito.MockitoAnnotations;
 import in.kamranali.converters.RecipeCommandToRecipe;
 import in.kamranali.converters.RecipeToRecipeCommand;
 import in.kamranali.domain.Recipe;
+import in.kamranali.exceptions.NotFoundException;
 import in.kamranali.repositories.RecipeRepository;
 
 public class RecipeServiceImplTest {
@@ -73,5 +75,16 @@ public class RecipeServiceImplTest {
 		long testID = 2L;
 		recipeService.deleteByid(testID);
 		verify(recipeRepository, times(1)).deleteById(testID);
+	}
+	
+	@Test(expected=NotFoundException.class)
+	public void getRecipeByIDTestNotFound() {
+		
+		Optional<Recipe> recipeOptional = Optional.empty();
+				
+		when(recipeRepository.findById(Mockito.anyLong())).thenReturn(recipeOptional);
+		recipeService.findById(1L);
+		
+		fail("Exception Expected");
 	}
 }

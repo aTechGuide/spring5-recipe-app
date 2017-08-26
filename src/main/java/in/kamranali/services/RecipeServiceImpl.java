@@ -11,6 +11,7 @@ import in.kamranali.commands.RecipeCommand;
 import in.kamranali.converters.RecipeCommandToRecipe;
 import in.kamranali.converters.RecipeToRecipeCommand;
 import in.kamranali.domain.Recipe;
+import in.kamranali.exceptions.NotFoundException;
 import in.kamranali.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 
@@ -42,7 +43,7 @@ public class RecipeServiceImpl implements RecipeService {
 		Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 		
 		if(!recipeOptional.isPresent())
-			throw new RuntimeException("Recipe Not Found !!");
+			throw new NotFoundException("Recipe Not Found !!");
 		
 		return recipeOptional.get();
 	}

@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import in.kamranali.commands.RecipeCommand;
 import in.kamranali.domain.Recipe;
+import in.kamranali.exceptions.NotFoundException;
 import in.kamranali.services.RecipeService;
 
 /**
@@ -101,5 +102,15 @@ public class RecipeControllerTest {
     	.andExpect(view().name("redirect:/"));
     	
     	verify(recipeService, times(1)).deleteByid(Mockito.anyLong());
+    }
+    
+    @Test
+    public void testGetRecipeNotFound() throws Exception {
+    	
+    	when(recipeService.findById(Mockito.anyLong())).thenThrow(NotFoundException.class);
+    	
+    	mockMvc.perform(get("/recipe/1/show"))
+    	.andExpect(status().isNotFound());
+    	
     }
 }
