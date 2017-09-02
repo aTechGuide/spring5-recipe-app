@@ -85,6 +85,7 @@
 						<excludes>
 							<exclude>in/kamranali/*.class</exclude>
 							<exclude>in/kamranali/bootstrap/*.class</exclude>
+							<exclude>in/kamranali/exceptions/*.class</exclude>
 						</excludes>
 					</instrumentation>
 					<formats>
