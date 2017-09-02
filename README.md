@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/kamranalinitb/spring5-recipe-app/tree/master.svg?style=shield)](https://circleci.com/gh/kamranalinitb/spring5-recipe-app/tree/master)
+[![CircleCI](https://circleci.com/gh/kamranalinitb/spring5-recipe-app/tree/master.svg?style=shield)](https://circleci.com/gh/kamranalinitb/spring5-recipe-app/tree/master)  [![codecov](https://codecov.io/gh/kamranalinitb/spring5-recipe-app/branch/master/graph/badge.svg)](https://codecov.io/gh/kamranalinitb/spring5-recipe-app)
 
 # Recipe App
 
