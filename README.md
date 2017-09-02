@@ -6,3 +6,9 @@
 URL: http://localhost:8080/h2-console/  
 DB: jdbc:h2:mem:testdb  
 
+## Docker Specifics 
+
+### Commands  
+
+docker run --name mysqldb -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d mysql  
+

@@ -37,7 +37,7 @@ jobs:
           key: spring5-recipe-app-{{ checksum "pom.xml" }}
         
       # run tests!
-      - run: mvn install surefire-report:report-only site -DgenerateReports=false
+      - run: mvn install surefire-report:report-only site -DgenerateReports=false cobertura:cobertura
 
       - store_test_results:
           path: target/surefire-reports
@@ -47,5 +47,9 @@ jobs:
 
       - store_artifacts:
           path: target/site
+      
+      - run: 
+          name: Send to Codecov
+          command: bash <(curl -s https://codecov.io/bash)    
 
 
