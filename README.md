@@ -12,3 +12,4 @@ DB: jdbc:h2:mem:testdb
 
 docker run --name mysqldb -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d mysql  
 
+Developed while learning Spring MVC Application @[SpringFrameworkGuru](https://courses.springframework.guru/p/spring-framework-5-begginer-to-guru)  
