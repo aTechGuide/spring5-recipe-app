@@ -2,14 +2,14 @@
 
 # Recipe App
 
-## H2 Specifics  
-URL: http://localhost:8080/h2-console/  
-DB: jdbc:h2:mem:testdb  
+## Persistance Details 
+DB: H2
+Web Console: http://localhost:8080/h2-console/  
+URL: jdbc:h2:mem:testdb  
 
 ## Docker Specifics 
 
-### Commands  
+Run Command: ```docker run --name mysqldb -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d mysql```
 
-docker run --name mysqldb -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -d mysql  
-
+# Reference
 Developed while learning Spring MVC Application @[SpringFrameworkGuru](https://courses.springframework.guru/p/spring-framework-5-begginer-to-guru)  
